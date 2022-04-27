@@ -1,4 +1,7 @@
 from pydub import AudioSegment
+import librosa
+import numpy as np
+import pandas as pd
 
 def convert_mp3_to_wav(music_file):
   sound = AudioSegment.from_mp3(music_file)
@@ -52,6 +55,8 @@ def extract_features(music_file):
   return values
 
 def scaling_data(music_file_values):
+    dff = pd.read_csv("dff.csv")
+    dff = dff.iloc[:,1:]
     means = np.array([])
     standard_deviation = np.array([])
     scaled_data = np.array([])
