@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import pickle
 # not able to import
 # from Werkzeug import secure_filename
@@ -22,7 +22,7 @@ def predict():
 
 @app.route('/api/upload')
 def upload_file():
-   return render_template('upload.html')
+   return render_template('index.html')
 	
 @app.route('/api/uploader', methods = ['GET', 'POST'])
 def upload_music():
