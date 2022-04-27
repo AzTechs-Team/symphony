@@ -10,7 +10,8 @@ def convert_mp3_to_wav(music_file):
 def extract_features(music_file):
   audio = convert_mp3_to_wav(music_file)
 
-  y,sr = librosa.load("music_file.wav",duration=30)
+  y, sr = librosa.load(
+      r"D:\\college_stuff\\ai\\symphony\\src\\music_file.wav", duration=30)
   # y,sr = librosa.load("Data/genres_original/classical/classical.00051.wav",duration=30)
 
   values =[661794]
