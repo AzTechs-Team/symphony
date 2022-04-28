@@ -22,7 +22,7 @@
   >
     <div
       style="
-        padding: 3rem;
+        padding: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,16 +30,26 @@
         height: 84vh;
       "
     >
-      <img src="https://cdn.discordapp.com/attachments/750019721193324544/968941975984279602/symphony.png" width="800"/>
-      <div
+      <img
+        src="https://cdn.discordapp.com/attachments/750019721193324544/968941975984279602/symphony.png"
+        width="800"
+      />
+
+      {% if data['label'] == " " %}
+      <form
+        action="http://localhost:5000/api/uploader"
+        method="POST"
+        enctype="multipart/form-data"
         style="
           display: flex;
+          justify-content: center;
           flex-direction: column;
-          align-items: center;
           padding-top: 2rem;
         "
       >
-        <button
+        <input
+          type="file"
+          name="file"
           style="
             background: linear-gradient(0deg, #fedfe8, #fedfe8), #15141d;
             background-repeat: no-repeat;
@@ -50,15 +60,31 @@
             width: 320px;
             height: 55px;
             font-size: large;
-            cursor: pointer;
+            padding: 15px;
           "
-        >
-          <i class="fa fa-upload"></i>
-          Upload your music file
-        </button>
-        <p style="padding-top: 10px">Song uploaded:</p>
-      </div>
-
+        />
+        <br />
+        <input type="submit" style="margin-top: 15px; padding: 3px" />
+      </form>
+      {%else%}
+      <button
+        style="
+          background: linear-gradient(0deg, #fedfe8, #fedfe8), #15141d;
+          background-repeat: no-repeat;
+          border: 1px solid #000000;
+          box-sizing: border-box;
+          box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          width: 320px;
+          height: 55px;
+          font-size: large;
+          text-decoration: none;
+          color: #000;
+        "
+      >
+        <a href="http://localhost:5000/">Try another song!</a>
+      </button>
+      {%endif%}
       <div
         style="
           padding-top: 3rem;
@@ -67,8 +93,63 @@
           align-items: center;
         "
       >
-        <p style="font-size: 1.5rem;">The genre of the song uploaded is</p>
-          <img src="https://cdn.discordapp.com/attachments/750019721193324544/968950040502599710/blank.png" width="500" />
+        <p style="font-size: 1.5rem">The genre of the song uploaded is</p>
+        {% if data['label'] == "pop" %}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947625443344464/pop.png"
+          width="500"
+        />
+        {%elif data['label'] == 'reggae'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947625661435944/reggae.png"
+          width="500"
+        />
+        {%elif data['label'] == 'rock'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947625913110609/rock.png"
+          width="500"
+        />
+        {%elif data['label'] == 'blues'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947626131206214/blues.png"
+          width="500"
+        />
+        {%elif data['label'] == 'hiphop'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947627150438412/hiphop.png"
+          width="500"
+        />
+        {%elif data['label'] == 'metal'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947627586641970/metal.png"
+          width="500"
+        />
+        {%elif data['label'] == 'country'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947626621952041/country.png"
+          width="500"
+        />
+        {%elif data['label'] == 'classical'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947626370297856/classical.png"
+          width="500"
+        />
+        {%elif data['label'] == 'jazz'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947627389485067/jazz.png"
+          width="500"
+        />
+        {%elif data['label'] == 'disco'%}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968947626861006868/disco.png"
+          width="500"
+        />
+        {% else %}
+        <img
+          src="https://cdn.discordapp.com/attachments/750019721193324544/968950040502599710/blank.png"
+          width="500"
+        />
+        {%endif%}
       </div>
     </div>
   </body>
